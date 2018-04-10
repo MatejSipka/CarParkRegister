@@ -2,49 +2,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@color/bg_clr"
     tools:context="com.app.carparkregister.LoginScreen">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="226dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            android:text="Username"
+            android:textColor="@color/login_color_white" />
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
+        <EditText
+            android:id="@+id/login_username"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/cpr_login_inputs"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/login_black"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Password"
+            android:textColor="@color/login_color_white" />
+
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/cpr_login_inputs"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textColor="@color/login_black"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="15dp" />
+
+        <CheckBox
+            android:id="@+id/login_keep_logged_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/login_color_white"
+            android:text="Keep logged in"
+            android:textColor="@color/login_color_white" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
-        </LinearLayout>
-    </FrameLayout>
+                <Button
+                    android:id="@+id/login_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Login" />
+
+                <TextView
+                    android:id="@+id/login_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:text="Register"
+                    android:textColor="@color/login_color_white"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+    </LinearLayout>
 
 </FrameLayout>
