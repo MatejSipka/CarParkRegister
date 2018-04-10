@@ -2,17 +2,19 @@ package com.app.carparkregister
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.Toast
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register_screen.*
 
 /**
  *
  */
 class RegisterScreen : AppCompatActivity() {
+
+    var database = FirebaseDatabase.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -38,6 +40,11 @@ class RegisterScreen : AppCompatActivity() {
     }
 
     fun submitNewData(name:String, password:String, phone:String, workPhone:String, carType:String, carColor:String) {
+            val user = User(name, password)
+        val ref = database.getReference("users/")
+        val key = ref.push().key
+        ref.child(key).setValue(user)
 
     }
+
 }
