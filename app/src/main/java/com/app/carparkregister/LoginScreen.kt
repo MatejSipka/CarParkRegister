@@ -1,9 +1,11 @@
 package com.app.carparkregister
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
+import android.widget.TextView
 
 /**
  *
@@ -15,5 +17,12 @@ class LoginScreen : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_login_screen)
+
+        val loginRegister = findViewById<TextView>(R.id.login_register) as TextView
+
+        loginRegister.setOnClickListener {
+            val intent = Intent(this, RegisterScreen::class.java)
+            startActivity(intent)
+        }
     }
 }
