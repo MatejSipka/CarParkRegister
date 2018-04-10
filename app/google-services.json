@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "524096833445",
+    "firebase_url": "https://carparkregister-26d8d.firebaseio.com",
+    "project_id": "carparkregister-26d8d",
+    "storage_bucket": "carparkregister-26d8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524096833445:android:79eff0c53ca6a02c",
+        "android_client_info": {
+          "package_name": "com.app.carparkregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524096833445-lgeekv4e75cinahrun8luabskeofbn7g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.carparkregister",
+            "certificate_hash": "a5e044bdb3e7ae6dba59646c4d2dd52ae90732a4"
+          }
+        },
+        {
+          "client_id": "524096833445-j4k79uoeikps295sad542od5c08aa79v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_gi6oCvXYbQ7XFJMtxiUkbwP_IEylltI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524096833445-j4k79uoeikps295sad542od5c08aa79v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

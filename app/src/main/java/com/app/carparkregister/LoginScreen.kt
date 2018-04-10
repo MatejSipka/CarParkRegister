@@ -5,13 +5,30 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import kotlinx.android.synthetic.main.activity_login_screen.*
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.DatabaseReference
+
+
+
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 class LoginScreen : AppCompatActivity() {
+
+
     private val mHideHandler = Handler()
+
+    private val User = User("", "")
+
+    var database = FirebaseDatabase.getInstance()
+    var myRef = database.getReference("users/")
+
+
+
+
     private val mHidePart2Runnable = Runnable {
         // Delayed removal of status and navigation bar
 
@@ -45,6 +62,8 @@ class LoginScreen : AppCompatActivity() {
         false
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -60,7 +79,17 @@ class LoginScreen : AppCompatActivity() {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         dummy_button.setOnTouchListener(mDelayHideTouchListener)
-    }
+
+        val availableUsers: List<User> = mutableListOf(
+                User("Honza", "Porsche"),
+                User("Peter", "Toyota"),
+                User("Pepa", "Peugeot"),
+                User("Matej", "Nissan")
+        )
+        availableUsers.forEach {
+           myRef.setValue(availableUsers)       }
+
+        }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
