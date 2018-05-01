@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_login_screen.*
 
 /**
  *
@@ -19,6 +20,11 @@ class LoginScreen : AppCompatActivity() {
         setContentView(R.layout.activity_login_screen)
 
         val loginRegister = findViewById<TextView>(R.id.login_register) as TextView
+
+        login_login.setOnClickListener{
+            val intent = Intent(this, MainParkWindow::class.java)
+            startActivity(intent)
+        }
 
         loginRegister.setOnClickListener {
             val intent = Intent(this, RegisterScreen::class.java)

@@ -7,8 +7,8 @@
 
 
     <LinearLayout
-        android:layout_width="260dp"
-        android:layout_height="450dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical">
 
@@ -23,12 +23,12 @@
 
         <EditText
             android:id="@+id/register_name"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/cpr_login_inputs"
             android:ems="10"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textCursorDrawable="@drawable/color_cursor" />
 
         <TextView
             android:id="@+id/textView4"
@@ -41,11 +41,11 @@
         <EditText
             android:id="@+id/register_passwd"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/cpr_login_inputs"
             android:ems="10"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textCursorDrawable="@drawable/color_cursor" />
 
         <TextView
             android:id="@+id/textView5"
@@ -58,11 +58,11 @@
         <EditText
             android:id="@+id/register_passwd_check"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/cpr_login_inputs"
             android:ems="10"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textCursorDrawable="@drawable/color_cursor" />
 
         <TextView
             android:id="@+id/textView6"
@@ -75,62 +75,11 @@
         <EditText
             android:id="@+id/register_phone"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/cpr_login_inputs"
-            android:ems="10"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:inputType="phone" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Work phone"
-            android:textColor="@color/login_color_white" />
-
-        <EditText
-            android:id="@+id/register_work_phone"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
             android:background="@drawable/cpr_login_inputs"
             android:ems="10"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Car type/model"
-            android:textColor="@color/login_color_white" />
-
-        <EditText
-            android:id="@+id/register_car_type"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/cpr_login_inputs"
-            android:ems="10"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Car color"
-            android:textColor="@color/login_color_white" />
-
-        <EditText
-            android:id="@+id/register_car_color"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/cpr_login_inputs"
-            android:ems="10"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:inputType="textPersonName" />
+            android:inputType="phone"
+            android:textCursorDrawable="@drawable/color_cursor" />
 
         <Button
             android:id="@+id/register_submit"
