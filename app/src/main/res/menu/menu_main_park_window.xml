@@ -1,14 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.app.carparkregister.MainParkWindow">
-    <item
-        android:id="@+id/logout"
-        android:title="Logout"
-        app:showAsAction="never" />
+    tools:context="com.app.carparkregister.MainParkWindow"
+    app:showAsAction="always"
+    android:icon="@android:drawable/ic_menu_info_details">
     <item
         android:id="@+id/garage"
         android:title="My cars"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
         app:showAsAction="never" />
 
 </menu>

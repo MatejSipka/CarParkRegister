@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 
 import android.os.Bundle
 import android.support.v4.view.ViewPager
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
@@ -17,6 +18,9 @@ class MainParkWindow : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_park_window)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         // SET TABS
         sectionsPagerAdapter = SectionsPageAdapter(supportFragmentManager)
