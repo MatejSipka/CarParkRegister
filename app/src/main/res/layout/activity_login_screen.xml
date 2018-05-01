@@ -16,7 +16,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="Email"
             android:textColor="@color/login_color_white" />
 
         <EditText
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/cpr_login_inputs"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:textColor="@color/login_black"
             android:textCursorDrawable="@drawable/color_cursor"
             android:textSize="15dp" />

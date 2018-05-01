@@ -3,8 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.app.carparkregister.MainParkWindow">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:id="@+id/logout"
+        android:title="Logout"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/garage"
+        android:title="My cars"
+        app:showAsAction="never" />
+
 </menu>
+
