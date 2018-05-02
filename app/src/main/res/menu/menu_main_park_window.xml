@@ -9,6 +9,10 @@
         android:title="My cars"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/profile"
+        android:title="My profile"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/logout"
         android:title="Logout"
         app:showAsAction="never" />

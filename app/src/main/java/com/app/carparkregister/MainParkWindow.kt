@@ -45,10 +45,11 @@ class MainParkWindow : AppCompatActivity() {
                     finish()
                 }
                 R.id.garage -> {
-
+                    val intent = Intent(this, UserGarage::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
-
 
         return super.onOptionsItemSelected(item)
     }
