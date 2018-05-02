@@ -2,23 +2,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_clr"
+    android:background="@mipmap/parkovanijippodklad"
     tools:context="com.app.carparkregister.TabFragmentThree">
 
-
-    <LinearLayout
+    <TableLayout
+        android:id="@+id/table1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:layout_gravity="center_horizontal"
+        android:gravity="center">
 
+    <TableRow android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:id="@+id/button39"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/appbar_padding_top"
 
-    </LinearLayout>
+            android:background="@android:color/holo_green_light"
+
+            android:text="39" />
+        </TableRow>
+        <TableRow android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button40"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/appbar_padding_top"
+
+                android:background="@android:color/holo_green_light"
+
+                android:text="40" />
+        </TableRow>
+        <TableRow android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button41"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/appbar_padding_top"
+
+                android:background="@android:color/holo_green_light"
+
+                android:text="41" />
+        </TableRow>
+        <TableRow android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button42"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/appbar_padding_top"
+
+                android:background="@android:color/holo_green_light"
+
+                android:text="42" />
+        </TableRow>
+        <TableRow android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button43"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/appbar_padding_top"
+
+                android:background="@android:color/holo_green_light"
+
+                android:text="43" />
+        </TableRow>
+        <TableRow android:id="@+id/tableRow6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button44"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/appbar_padding_top"
+
+                android:background="@android:color/holo_green_light"
+
+                android:text="44" />
+        </TableRow>
+        <TableRow android:id="@+id/tableRow7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button45"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/appbar_padding_top"
+
+                android:background="@android:color/holo_green_light"
+
+                android:text="45" />
+        </TableRow>
+        <TableRow android:id="@+id/tableRow8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button46"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/appbar_padding_top"
+
+                android:background="@android:color/holo_green_light"
+
+                android:text="46" />
+        </TableRow>
+
+
+
+    </TableLayout>
+
 
 
 </FrameLayout>
