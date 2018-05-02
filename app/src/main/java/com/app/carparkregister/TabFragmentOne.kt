@@ -15,9 +15,7 @@ class TabFragmentOne : Fragment() {
 
         var view: View = inflater!!.inflate(R.layout.tab_fragment_one, container, false)
 
-        view.button4.setOnClickListener {
-            Toast.makeText(activity, "aaaaa", Toast.LENGTH_LONG).show()
-        }
+
 
         return view
     }
