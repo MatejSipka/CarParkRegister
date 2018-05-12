@@ -3,14 +3,15 @@ package com.app.carparkregister
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.ExpandableListAdapter
+import android.widget.LinearLayout
+import android.widget.SimpleAdapter
 
-import android.widget.ExpandableListView
-import android.widget.Toast
 import com.app.carparkregister.domain.CarDao
 import com.app.carparkregister.domain.UserDao
 import com.google.firebase.auth.FirebaseAuth
@@ -18,13 +19,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
 
 class UserGarage : AppCompatActivity() {
 
-    var listAdapter: ExpandableListAdapter? = null
-    var expListView: ExpandableListView? = null
-    var listDataHeader: ArrayList<String> = arrayListOf()
-    var listDataChild: HashMap<String, List<String>> = HashMap()
+    private lateinit var carListView: RecyclerView
+    lateinit var storedCars: ArrayList<CarDao>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,7 @@ class UserGarage : AppCompatActivity() {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()?.setDisplayShowHomeEnabled(true)
 
-        var storedCars: ArrayList<CarDao>? = null
+
         // USER SHOULD NOT BE NULL SINCE HE IS LOGGED IN
         var email = FirebaseAuth.getInstance().currentUser!!.email
         var database = FirebaseDatabase.getInstance()
@@ -46,12 +46,25 @@ class UserGarage : AppCompatActivity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 var userDao = snapshot.children.first().getValue(UserDao::class.java)
-                storedCars = userDao?.cars
+                if (userDao?.cars == null) {
+                    storedCars = arrayListOf(CarDao())
+                } else {
+                    storedCars = userDao?.cars!!
+                }
 
-                expListView = findViewById<View>(R.id.expandable_list_garage) as ExpandableListView?
-                prepareListData(storedCars)
-                listAdapter = ExpandableListAdapter(this@UserGarage, listDataHeader as List<String>, listDataChild)
-                expListView?.setAdapter(listAdapter)
+                carListView = findViewById(R.id.car_list_garage)
+                val adapter = GarageListAdapter(storedCars)
+                carListView.layoutManager = LinearLayoutManager(this@UserGarage, LinearLayout.VERTICAL, false)
+                carListView.adapter = adapter
+
+                val swipeHandler = object : SwipeToDeleteCallback(this@UserGarage) {
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder?, direction: Int) {
+                        val adapter = carListView.adapter as GarageListAdapter
+                        adapter.removeAt(viewHolder!!.adapterPosition)
+                    }
+                }
+                val itemTouchHelper = ItemTouchHelper(swipeHandler)
+                itemTouchHelper.attachToRecyclerView(carListView)
 
             }
         })
@@ -101,21 +114,4 @@ class UserGarage : AppCompatActivity() {
         super.onBackPressed()
     }
 
-    private fun prepareListData(storedCars: ArrayList<CarDao>?) {
-
-        if (storedCars == null || storedCars!!.isEmpty()) {
-            listDataHeader.add("Empty garage.")
-            listDataChild[listDataHeader.get(0)] = arrayListOf()
-        } else {
-            for ((index, carDao: CarDao) in storedCars!!.withIndex()) {
-                listDataHeader.add(carDao.spz)
-                val car = ArrayList<String>()
-                car.add("Model : " + carDao.model)
-                car.add("Color : " + carDao.color)
-                car.add("Plates : " + carDao.spz)
-                listDataChild[listDataHeader.get(index)] = car
-            }
-        }
-
-    }
 }
