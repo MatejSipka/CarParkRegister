@@ -62,43 +62,53 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/week_mon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/weeks_button"
                 android:layout_weight="1"
                 android:text="Mon"
+                android:textColor="#ffffff"
                 tools:text="Mon" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/week_tues"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/weeks_button"
                 android:layout_weight="1"
+                android:textColor="#ffffff"
                 android:text="Tues"
                 tools:text="Tues" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/week_wed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/weeks_button"
                 android:text="Wed"
+                android:textColor="#ffffff"
                 tools:text="Wed" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/week_thurs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Thurs"
+                android:textColor="#ffffff"
+                android:background="@drawable/weeks_button"
                 tools:text="Thurs" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/week_fri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/weeks_button"
                 android:text="Fri"
+                android:textColor="#ffffff"
                 tools:text="Fri" />
         </LinearLayout>
 

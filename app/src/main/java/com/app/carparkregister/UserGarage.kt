@@ -19,6 +19,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
+import android.view.LayoutInflater
+import android.support.v7.app.AlertDialog
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_car_details_window.*
+import org.w3c.dom.Text
+
 
 class UserGarage : AppCompatActivity() {
 
@@ -99,9 +107,22 @@ class UserGarage : AppCompatActivity() {
                 finish()
             }
             R.id.garage_add_car -> {
-                val intent = Intent(this, CarDetailsWindow::class.java)
-                startActivity(intent)
-                finish()
+
+                val layoutInflaterAndroid = LayoutInflater.from(this@UserGarage)
+                val mView = layoutInflaterAndroid.inflate(R.layout.activity_car_details_window, null)
+                val alertDialogBuilderUserInput = AlertDialog.Builder(this@UserGarage)
+                alertDialogBuilderUserInput.setView(mView)
+                val alertDialogAndroid = alertDialogBuilderUserInput.create()
+                alertDialogAndroid.show()
+
+                mView.findViewById<Button>(R.id.car_details_submit).setOnClickListener{
+                    var car:CarDao = CarDao(mView.findViewById<EditText>(R.id.car_details_model).text.toString()
+                            ,mView.findViewById<EditText>(R.id.car_details_color).text.toString(),
+                            mView.findViewById<EditText>(R.id.car_details_spz).text.toString())
+                    submitNewCar(car)
+                    alertDialogAndroid.hide()
+                }
+
             }
             android.R.id.home -> {
                 goBack()
@@ -114,6 +135,30 @@ class UserGarage : AppCompatActivity() {
     override fun onBackPressed() {
         goBack()
         super.onBackPressed()
+    }
+
+    fun submitNewCar(car:CarDao){
+        var storedCars: ArrayList<CarDao>? = null
+        // USER SHOULD NOT BE NULL SINCE HE IS LOGGED IN
+        var email = FirebaseAuth.getInstance().currentUser!!.email
+        var database = FirebaseDatabase.getInstance()
+        var databaseReference = database.getReference("users/")
+
+        databaseReference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var userDao = snapshot.children.first().getValue(UserDao::class.java)
+                storedCars = userDao?.cars
+                var size = storedCars?.size
+                if(storedCars == null){
+                    size = 0
+                }
+                storedCars?.add(car)
+                snapshot.children.first().child("cars").ref.child(size.toString()).setValue(car)
+            }
+        })
     }
 
 }

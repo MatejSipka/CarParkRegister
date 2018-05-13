@@ -1,5 +1,6 @@
 package com.app.carparkregister
 
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 
@@ -10,23 +11,39 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main_park_window.*
+import android.net.ConnectivityManager
+import android.widget.Toast
+import com.app.carparkregister.service.ParkingReservationService
+import com.app.carparkregister.utils.CommonUtils
+
 
 class MainParkWindow : AppCompatActivity() {
 
     var sectionsPagerAdapter: SectionsPageAdapter? = null
+    var parkService: ParkingReservationService? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_park_window)
 
+        parkService = ParkingReservationService(this,this@MainParkWindow)
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        if(!CommonUtils().checkInternetConnection(getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)){
+            Toast.makeText(this@MainParkWindow,"No internet connection!", Toast.LENGTH_LONG).show()
+        }
 
         // SET TABS
         sectionsPagerAdapter = SectionsPageAdapter(supportFragmentManager)
         var viewPager:ViewPager = container
         setupViewPager(viewPager)
         main_tab_layout.setupWithViewPager(viewPager)
+
+        parkService!!.handleTodayButtonHighlight()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
