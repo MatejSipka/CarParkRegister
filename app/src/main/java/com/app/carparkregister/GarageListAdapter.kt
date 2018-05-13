@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.app.carparkregister.domain.CarDao
 import kotlinx.android.synthetic.main.user_garage_list_item.view.*
 
@@ -13,8 +14,15 @@ class GarageListAdapter(private val dataSource: ArrayList<CarDao>) : RecyclerVie
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): GarageListAdapter.ViewHolder {
         val v = LayoutInflater.from(parent?.context).inflate(R.layout.user_garage_list_item, parent, false)
         var viewHolder = ViewHolder(v)
-//        viewHolder.bindItems(dataSource[viewType])
-        return viewHolder
+
+        return viewHolder.listen { pos, type ->
+            val item = dataSource.get(pos)
+            Toast.makeText(parent?.context, item.spz, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    fun getItemAtPosition(position: Int): CarDao {
+        return dataSource[position]
     }
 
     override fun getItemCount(): Int {
@@ -32,51 +40,16 @@ class GarageListAdapter(private val dataSource: ArrayList<CarDao>) : RecyclerVie
         notifyItemRemoved(position)
     }
 
-//    private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//
-//    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-////        val rowView = inflater.inflate(R.layout.user_garage_list_item, parent, false)
-//        val view: View
-//        val holder: ViewHolder
-//
-//        if (convertView == null) {
-//            view = inflater.inflate(R.layout.user_garage_list_item, parent, false)
-//            holder = ViewHolder()
-//            holder.carModel = view.findViewById<TextView>(R.id.car_model) as TextView
-//            holder.carPlate = view.findViewById<TextView>(R.id.car_plate) as TextView
-//            holder.carColor = view.findViewById<TextView>(R.id.car_color) as TextView
-//            view.tag = holder
-//        } else {
-//            view = convertView
-//            holder = convertView.tag as ViewHolder
-//        }
-//
-//        val carModel = holder.carModel
-//        val carPlate = holder.carPlate
-//        val carColor = holder.carColor
-//
-//        val car = getItem(position) as CarDao
-//
-//        carModel.text = car.model
-//        carPlate.text = car.spz
-//        carColor.text = car.color
-//
-//        view.setOnTouchListener(OnSwipeTouchListener(context))
-//
-//        return view
-//    }
-//
-//    override fun getItem(p0: Int): Any {
-//        return dataSource[p0]
-//    }
-//
-//    override fun getItemId(p0: Int): Long {
-//        return p0.toLong()
-//    }
-//
-//    override fun getCount(): Int {
-//        return dataSource.size
-//    }
+    fun getListData(): ArrayList<CarDao> {
+        return dataSource
+    }
+
+    fun <T : RecyclerView.ViewHolder> T.listen(event: (position: Int, type: Int) -> Unit): T {
+        itemView.setOnClickListener {
+            event.invoke(getAdapterPosition(), getItemViewType())
+        }
+        return this
+    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

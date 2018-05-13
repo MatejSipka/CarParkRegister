@@ -10,7 +10,6 @@ import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.LinearLayout
-import android.widget.SimpleAdapter
 
 import com.app.carparkregister.domain.CarDao
 import com.app.carparkregister.domain.UserDao
@@ -60,10 +59,13 @@ class UserGarage : AppCompatActivity() {
                 val swipeHandler = object : SwipeToDeleteCallback(this@UserGarage) {
                     override fun onSwiped(viewHolder: RecyclerView.ViewHolder?, direction: Int) {
                         val adapter = carListView.adapter as GarageListAdapter
-                        adapter.removeAt(viewHolder!!.adapterPosition)
+                        val position = viewHolder!!.adapterPosition
+                        adapter.removeAt(position)
+                        snapshot.children.first().ref.child("cars").ref.setValue(adapter.getListData())
                     }
                 }
                 val itemTouchHelper = ItemTouchHelper(swipeHandler)
+
                 itemTouchHelper.attachToRecyclerView(carListView)
 
             }
