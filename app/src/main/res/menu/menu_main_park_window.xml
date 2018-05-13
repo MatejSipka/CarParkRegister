@@ -5,9 +5,14 @@
     app:showAsAction="always"
     android:icon="@android:drawable/ic_menu_info_details">
     <item
+        android:id="@+id/profile"
+        android:title="My profile"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_person_black_24dp"/>
+    <item
         android:id="@+id/garage"
         android:title="My cars"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/logout"
         android:title="Logout"

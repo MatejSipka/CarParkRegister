@@ -33,6 +33,15 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_main_park_window"
             android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".UserGarage"
+            android:label="@string/title_activity_user_garage"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".CarDetailsWindow"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_car_details_window"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

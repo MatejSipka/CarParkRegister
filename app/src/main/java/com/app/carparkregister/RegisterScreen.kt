@@ -87,8 +87,7 @@ class RegisterScreen : AppCompatActivity() {
                     startActivity(loginIntent)
                     finish()
                 }
-                .addOnFailureListener {
-                }
+
         val user = UserDao(email, fullName, phone)
         val ref = database.getReference("users/")
         val key = ref.push().key

@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.app.carparkregister.UserGarage"
+    app:showAsAction="always"
+    android:icon="@android:drawable/ic_menu_info_details">
+    <item
+        android:id="@+id/garage_add_car"
+        app:showAsAction="always|withText"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Add car"
+        />
+
+    <item
+        android:id="@+id/garage_parking_lots"
+        android:title="Parking lots"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/garage_profile"
+        android:title="My profile"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/garage_logout"
+        android:title="Logout"
+        app:showAsAction="never" />
+
+</menu>
+
