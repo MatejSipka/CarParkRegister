@@ -2,6 +2,7 @@ package com.app.carparkregister
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 
 import android.os.Bundle
@@ -43,6 +44,23 @@ class MainParkWindow : AppCompatActivity() {
         main_tab_layout.setupWithViewPager(viewPager)
 
         parkService!!.handleTodayButtonHighlight()
+
+
+        week_mon.setOnClickListener {
+            parkService!!.handleWeekButtonsTextColor(week_mon)
+        }
+        week_tues.setOnClickListener {
+            parkService!!.handleWeekButtonsTextColor(week_tues)
+        }
+        week_wed.setOnClickListener {
+            parkService!!.handleWeekButtonsTextColor(week_wed)
+        }
+        week_thurs.setOnClickListener {
+            parkService!!.handleWeekButtonsTextColor(week_thurs)
+        }
+        week_fri.setOnClickListener {
+            parkService!!.handleWeekButtonsTextColor(week_fri)
+        }
 
     }
 
