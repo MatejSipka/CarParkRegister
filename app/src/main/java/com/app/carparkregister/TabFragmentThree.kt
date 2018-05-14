@@ -19,37 +19,34 @@ class TabFragmentThree : Fragment() {
         var view: View = inflater!!.inflate(R.layout.tab_fragment_three, container, false)
 
 
-        view.button39.setOnClickListener {
-            Toast.makeText(activity, "39 is now occupied!", Toast.LENGTH_SHORT).show()
-            view.button39.setText("Taken")
-        }
 
-        view.button40.setOnClickListener {
+
+        view.jip_button40.setOnClickListener {
             Toast.makeText(activity, "40 is now occupied!", Toast.LENGTH_SHORT).show()
-            view.button40.setText("Taken")
+            view.jip_button40.setText("Taken")
         }
 
-        view.button41.setOnClickListener {
+        view.jip_button41.setOnClickListener {
             Toast.makeText(activity, "41 is now occupied!", Toast.LENGTH_SHORT).show()
         }
 
-        view.button42.setOnClickListener {
+        view.jip_button42.setOnClickListener {
             Toast.makeText(activity, "42 is now occupied!", Toast.LENGTH_SHORT).show()
         }
 
-        view.button43.setOnClickListener {
+        view.jip_button43.setOnClickListener {
             Toast.makeText(activity, "43 is now occupied!", Toast.LENGTH_SHORT).show()
         }
 
-        view.button44.setOnClickListener {
+        view.jip_button44.setOnClickListener {
             Toast.makeText(activity, "44 is now occupied!", Toast.LENGTH_SHORT).show()
         }
 
-        view.button45.setOnClickListener {
+        view.jip_button45.setOnClickListener {
             Toast.makeText(activity, "45 is now occupied!", Toast.LENGTH_SHORT).show()
         }
 
-        view.button46.setOnClickListener {
+        view.jip_button46.setOnClickListener {
             Toast.makeText(activity, "46 is now occupied!", Toast.LENGTH_SHORT).show()
         }
 

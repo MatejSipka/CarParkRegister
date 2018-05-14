@@ -1,126 +1,97 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/parkovanijippodklad"
-    tools:context="com.app.carparkregister.TabFragmentThree">
+    android:layout_height="match_parent">
 
-    <TableLayout
-        android:id="@+id/table1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#777777"
+        tools:context="com.app.carparkregister.TabFragmentThree">
 
-    <TableRow android:id="@+id/tableRow1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
         <Button
-            android:id="@+id/button39"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/appbar_padding_top"
-
-            android:background="@android:color/holo_green_light"
-
-            android:text="39" />
-        </TableRow>
-        <TableRow android:id="@+id/tableRow2"
+            android:id="@+id/jip_button41"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/button40"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/appbar_padding_top"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@+id/jip_imageView38"
+            android:background="@drawable/parking_lot"
+            android:text="Button" />
 
-                android:background="@android:color/holo_green_light"
-
-                android:text="40" />
-        </TableRow>
-        <TableRow android:id="@+id/tableRow3"
+        <Button
+            android:id="@+id/jip_button40"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/button41"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/appbar_padding_top"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/jip_button41"
+            android:layout_below="@+id/jip_button43"
+            android:background="@drawable/parking_lot"
+            android:text="Button" />
 
-                android:background="@android:color/holo_green_light"
 
-                android:text="41" />
-        </TableRow>
-        <TableRow android:id="@+id/tableRow4"
+        <Button
+            android:id="@+id/jip_button42"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/button42"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/appbar_padding_top"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/jip_button41"
+            android:layout_below="@+id/jip_button41"
+            android:background="@drawable/parking_lot"
+            android:text="Button" />
 
-                android:background="@android:color/holo_green_light"
-
-                android:text="42" />
-        </TableRow>
-        <TableRow android:id="@+id/tableRow5"
+        <Button
+            android:id="@+id/jip_button43"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/button43"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/appbar_padding_top"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/jip_button41"
+            android:layout_below="@+id/jip_button42"
+            android:background="@drawable/parking_lot"
+            android:text="Button" />
 
-                android:background="@android:color/holo_green_light"
-
-                android:text="43" />
-        </TableRow>
-        <TableRow android:id="@+id/tableRow6"
+        <Button
+            android:id="@+id/jip_button44"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/button44"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/appbar_padding_top"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/jip_button41"
+            android:layout_below="@+id/jip_button40"
+            android:background="@drawable/parking_lot"
+            android:text="Button" />
 
-                android:background="@android:color/holo_green_light"
-
-                android:text="44" />
-        </TableRow>
-        <TableRow android:id="@+id/tableRow7"
+        <Button
+            android:id="@+id/jip_button45"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/button45"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/appbar_padding_top"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/jip_button41"
+            android:layout_below="@+id/jip_button47"
+            android:background="@drawable/parking_lot"
+            android:text="Button" />
 
-                android:background="@android:color/holo_green_light"
-
-                android:text="45" />
-        </TableRow>
-        <TableRow android:id="@+id/tableRow8"
+        <Button
+            android:id="@+id/jip_button46"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/button46"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/appbar_padding_top"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/jip_button41"
+            android:layout_below="@+id/jip_button45"
+            android:background="@drawable/parking_lot"
+            android:text="Button" />
 
-                android:background="@android:color/holo_green_light"
-
-                android:text="46" />
-        </TableRow>
-
-
-
-    </TableLayout>
-
+        <Button
+            android:id="@+id/jip_button47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/jip_button41"
+            android:layout_below="@+id/jip_button44"
+            android:background="@drawable/parking_lot"
+            android:text="Button" />
 
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/jip_imageView38"
+            android:layout_width="35dp"
+            android:layout_height="480dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@android:color/holo_green_dark" />
+
+    </RelativeLayout>
+</ScrollView>
