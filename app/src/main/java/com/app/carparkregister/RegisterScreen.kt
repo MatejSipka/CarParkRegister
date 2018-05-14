@@ -38,9 +38,6 @@ class RegisterScreen : AppCompatActivity() {
 
             if(doValidation(email, fullName, passwd, passwdCheck, phone)){
                 submitNewData(email, fullName, passwd, phone)
-
-                val intent = Intent(this, MainParkWindow::class.java)
-                startActivity(intent)
             }
         }
     }
