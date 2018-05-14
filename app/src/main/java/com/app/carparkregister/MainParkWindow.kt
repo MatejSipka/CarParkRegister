@@ -12,10 +12,12 @@ import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main_park_window.*
 import android.net.ConnectivityManager
+import android.support.v4.content.ContextCompat
 import android.view.animation.AnimationUtils
 import android.widget.Button
 
 import android.widget.Toast
+import com.app.carparkregister.domain.WeekDays
 import com.app.carparkregister.service.ParkingReservationService
 import com.app.carparkregister.utils.CommonUtils
 import kotlinx.android.synthetic.main.tab_fragment_one.*
@@ -47,6 +49,8 @@ class MainParkWindow : AppCompatActivity() {
         main_tab_layout.setupWithViewPager(viewPager)
 
         parkService!!.handleTodayButtonHighlight()
+
+//        parkService!!.fetchLotsForSelectedDay(WeekDays.MON)
 
         week_mon.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_mon)

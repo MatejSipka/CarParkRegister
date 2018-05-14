@@ -7,4 +7,6 @@
     <color name="black_overlay">#66000000</color>
     <color name="login_color_white">#bfffffff</color>
     <color name="login_black">#000</color>
+    <color name="free_parking_lot">#44f100</color>
+    <color name="lots_grass">#2c6915</color>
 </resources>

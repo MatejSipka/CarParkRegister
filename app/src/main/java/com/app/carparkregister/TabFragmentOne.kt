@@ -2,6 +2,7 @@ package com.app.carparkregister
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,9 +19,11 @@ class TabFragmentOne : Fragment() {
 
         var view: View = inflater!!.inflate(R.layout.tab_fragment_one, container, false)
 
-//        view.findViewById<Button>(R.id.gar_13).startAnimation(
-//                AnimationUtils.loadAnimation(activity, R.anim.button_rotation)
-//        )
+//        for(i in 1..13){
+//            val resID = activity.getResources().getIdentifier("GAR"+i.toString(), "id", activity.getPackageName())
+//            view.findViewById<Button>(R.id.GAR2).text = "FREE"
+//            view.findViewById<Button>(R.id.GAR2).setTextColor(ContextCompat.getColor(context, R.color.free_parking_lot))
+//        }
 
         return view
     }

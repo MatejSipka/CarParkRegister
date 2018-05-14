@@ -92,7 +92,7 @@
             android:layout_height="425dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:src="@android:color/holo_green_dark" />
+            android:src="@color/lots_grass" />
 
         <ImageView
             android:id="@+id/imageView26"

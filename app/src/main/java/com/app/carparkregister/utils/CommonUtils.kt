@@ -1,5 +1,6 @@
 package com.app.carparkregister.utils
 
+import android.graphics.Color
 import android.net.ConnectivityManager
 import java.util.*
 
@@ -15,5 +16,9 @@ class CommonUtils {
         val day = calendar.get(Calendar.DAY_OF_WEEK)
         return day
     }
+
+//    fun createColorFromString(color: String) : Color {
+//
+//    }
 
 }
