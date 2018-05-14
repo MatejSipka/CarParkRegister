@@ -2,7 +2,6 @@ package com.app.carparkregister
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 
 import android.os.Bundle
@@ -13,9 +12,13 @@ import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main_park_window.*
 import android.net.ConnectivityManager
+import android.view.animation.AnimationUtils
+import android.widget.Button
+
 import android.widget.Toast
 import com.app.carparkregister.service.ParkingReservationService
 import com.app.carparkregister.utils.CommonUtils
+import kotlinx.android.synthetic.main.tab_fragment_one.*
 
 
 class MainParkWindow : AppCompatActivity() {
@@ -28,23 +31,22 @@ class MainParkWindow : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_park_window)
 
-        parkService = ParkingReservationService(this,this@MainParkWindow)
+        parkService = ParkingReservationService(this, this@MainParkWindow)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        if(!CommonUtils().checkInternetConnection(getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)){
-            Toast.makeText(this@MainParkWindow,"No internet connection!", Toast.LENGTH_LONG).show()
+        if (!CommonUtils().checkInternetConnection(getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
+            Toast.makeText(this@MainParkWindow, "No internet connection!", Toast.LENGTH_LONG).show()
         }
 
         // SET TABS
         sectionsPagerAdapter = SectionsPageAdapter(supportFragmentManager)
-        var viewPager:ViewPager = container
+        var viewPager: ViewPager = container
         setupViewPager(viewPager)
         main_tab_layout.setupWithViewPager(viewPager)
 
         parkService!!.handleTodayButtonHighlight()
-
 
         week_mon.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_mon)
@@ -71,27 +73,27 @@ class MainParkWindow : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         var itemId = item?.itemId
-            when(itemId){
-                R.id.logout -> {
-                    var instance = FirebaseAuth.getInstance()
-                    instance.signOut()
-                    val intent = Intent(this, LoginScreen::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                R.id.garage -> {
-                    val intent = Intent(this, UserGarage::class.java)
-                    startActivity(intent)
-                    finish()
-                }
+        when (itemId) {
+            R.id.logout -> {
+                var instance = FirebaseAuth.getInstance()
+                instance.signOut()
+                val intent = Intent(this, LoginScreen::class.java)
+                startActivity(intent)
+                finish()
             }
+            R.id.garage -> {
+                val intent = Intent(this, UserGarage::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
 
         return super.onOptionsItemSelected(item)
     }
 
-    fun setupViewPager(viewPager:ViewPager){
+    fun setupViewPager(viewPager: ViewPager) {
 
-        var adapter:SectionsPageAdapter = SectionsPageAdapter(supportFragmentManager)
+        var adapter: SectionsPageAdapter = SectionsPageAdapter(supportFragmentManager)
         adapter.addFragment(TabFragmentOne(), "GARÁŽ")
         adapter.addFragment(TabFragmentTwo(), "MEDIA HALL")
         adapter.addFragment(TabFragmentThree(), "JIP")
