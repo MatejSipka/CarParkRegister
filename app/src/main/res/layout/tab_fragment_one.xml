@@ -55,78 +55,10 @@
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/parking_lot"
-            android:rotation="90"
-            android:text="@string/free_lot" />
-
-        <Button
-            android:id="@+id/GAR13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/button25"
-            android:layout_marginStart="64dp"
-            android:background="@drawable/parking_lot_full"
-            android:rotation="90"
-            android:text="@string/free_lot" />
-
-        <Button
             android:id="@+id/GAR2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/GAR1"
-            android:layout_toStartOf="@+id/imageView8"
-            android:background="@drawable/parking_lot"
-            android:text="@string/free_lot" />
-
-        <Button
-            android:id="@+id/GAR6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/GAR5"
-            android:layout_toStartOf="@+id/imageView8"
-            android:background="@drawable/parking_lot"
-            android:text="@string/free_lot" />
-
-        <Button
-            android:id="@+id/GAR8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/GAR7"
-            android:layout_toStartOf="@+id/imageView8"
-            android:background="@drawable/parking_lot"
-            android:text="@string/free_lot" />
-
-        <Button
-            android:id="@+id/GAR4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/GAR3"
-            android:layout_toStartOf="@+id/imageView8"
-            android:background="@drawable/parking_lot"
-            android:text="@string/free_lot" />
-
-        <Button
-            android:id="@+id/GAR12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/GAR10"
-            android:layout_toStartOf="@+id/imageView8"
-            android:background="@drawable/parking_lot"
-            android:text="@string/free_lot" />
-
-        <Button
-            android:id="@+id/GAR7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/GAR6"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
@@ -141,10 +73,55 @@
             android:text="@string/free_lot" />
 
         <Button
+            android:id="@+id/GAR4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GAR3"
+            android:layout_toStartOf="@+id/imageView8"
+            android:background="@drawable/parking_lot"
+            android:text="@string/free_lot" />
+
+        <Button
             android:id="@+id/GAR5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/GAR4"
+            android:layout_toStartOf="@+id/imageView8"
+            android:background="@drawable/parking_lot"
+            android:text="@string/free_lot" />
+
+        <Button
+            android:id="@+id/GAR6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GAR5"
+            android:layout_toStartOf="@+id/imageView8"
+            android:background="@drawable/parking_lot"
+            android:text="@string/free_lot" />
+
+        <Button
+            android:id="@+id/GAR7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GAR6"
+            android:layout_toStartOf="@+id/imageView8"
+            android:background="@drawable/parking_lot"
+            android:text="@string/free_lot" />
+
+        <Button
+            android:id="@+id/GAR8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GAR7"
+            android:layout_toStartOf="@+id/imageView8"
+            android:background="@drawable/parking_lot"
+            android:text="@string/free_lot" />
+
+        <Button
+            android:id="@+id/GAR9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GAR8"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
@@ -159,12 +136,35 @@
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/GAR9"
+            android:id="@+id/GAR11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/GAR8"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/parking_lot"
+            android:rotation="90"
+            android:text="@string/free_lot" />
+
+        <Button
+            android:id="@+id/GAR12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GAR10"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
+            android:text="@string/free_lot" />
+
+        <Button
+            android:id="@+id/GAR13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/GAR11"
+            android:layout_marginStart="64dp"
+            android:background="@drawable/parking_lot_full"
+            android:rotation="90"
             android:text="@string/free_lot" />
 
         <ImageView

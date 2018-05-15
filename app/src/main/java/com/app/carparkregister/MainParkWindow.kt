@@ -12,22 +12,22 @@ import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main_park_window.*
 import android.net.ConnectivityManager
-import android.support.v4.content.ContextCompat
-import android.view.animation.AnimationUtils
-import android.widget.Button
 
 import android.widget.Toast
-import com.app.carparkregister.domain.WeekDays
+import com.app.carparkregister.domain.CarDao
+import com.app.carparkregister.domain.UserDao
 import com.app.carparkregister.service.ParkingReservationService
 import com.app.carparkregister.utils.CommonUtils
-import kotlinx.android.synthetic.main.tab_fragment_one.*
-
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MainParkWindow : AppCompatActivity() {
 
     var sectionsPagerAdapter: SectionsPageAdapter? = null
-    var parkService: ParkingReservationService? = null
 
+    var parkService: ParkingReservationService? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,14 +43,14 @@ class MainParkWindow : AppCompatActivity() {
         }
 
         // SET TABS
-        sectionsPagerAdapter = SectionsPageAdapter(supportFragmentManager)
         var viewPager: ViewPager = container
         setupViewPager(viewPager)
         main_tab_layout.setupWithViewPager(viewPager)
 
         parkService!!.handleTodayButtonHighlight()
 
-//        parkService!!.fetchLotsForSelectedDay(WeekDays.MON)
+        initialCarFetch()
+        setCarsListener()
 
         week_mon.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_mon)
@@ -68,6 +68,46 @@ class MainParkWindow : AppCompatActivity() {
             parkService!!.handleWeekButtonsTextColor(week_fri)
         }
 
+    }
+
+    fun setCarsListener() {
+        var email = FirebaseAuth.getInstance().currentUser!!.email
+        var database = FirebaseDatabase.getInstance()
+
+        database.getReference("users/").orderByChild("email").equalTo(email).addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var userDao = snapshot.children.first().getValue(UserDao::class.java)
+                if (userDao?.cars == null) {
+                    parkService!!.setStoredCars(arrayListOf(CarDao()))
+                } else {
+                    parkService!!.setStoredCars(userDao?.cars!!)
+                }
+            }
+        })
+    }
+
+    fun initialCarFetch() {
+
+        var email = FirebaseAuth.getInstance().currentUser!!.email
+        var database = FirebaseDatabase.getInstance()
+
+        database.getReference("users/").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var userDao = snapshot.children.first().getValue(UserDao::class.java)
+                if (userDao?.cars == null) {
+                    parkService!!.setStoredCars(arrayListOf(CarDao()))
+                } else {
+                    parkService!!.setStoredCars(userDao?.cars!!)
+                }
+                parkService!!.updateCarsInUI(1, sectionsPagerAdapter!!.getItem(0).view!!, userDao?.cars!!)
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -97,11 +137,11 @@ class MainParkWindow : AppCompatActivity() {
 
     fun setupViewPager(viewPager: ViewPager) {
 
-        var adapter: SectionsPageAdapter = SectionsPageAdapter(supportFragmentManager)
-        adapter.addFragment(TabFragmentOne(), "GARÁŽ")
-        adapter.addFragment(TabFragmentTwo(), "MEDIA HALL")
-        adapter.addFragment(TabFragmentThree(), "JIP")
-        viewPager.adapter = adapter
+        sectionsPagerAdapter = SectionsPageAdapter(supportFragmentManager)
+        sectionsPagerAdapter!!.addFragment(TabFragmentOne(), "GARÁŽ")
+        sectionsPagerAdapter!!.addFragment(TabFragmentTwo(), "MEDIA HALL")
+        sectionsPagerAdapter!!.addFragment(TabFragmentThree(), "JIP")
+        viewPager.adapter = sectionsPagerAdapter
     }
 
 }
