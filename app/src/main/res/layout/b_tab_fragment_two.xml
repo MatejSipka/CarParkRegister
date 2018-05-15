@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#777777"
+        android:background="@color/background"
         tools:context="com.app.carparkregister.TabFragmentTwo">
 
         <Button
@@ -18,7 +18,7 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/imageView"
             android:background="@drawable/parking_lot"
-            android:text="Free"
+            android:text="@string/free_lot"
             android:textColor="@color/free_parking_lot"
             android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
@@ -29,7 +29,7 @@
             android:layout_alignStart="@+id/button5"
             android:layout_below="@+id/button8"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button5"
@@ -38,7 +38,7 @@
             android:layout_below="@+id/button10"
             android:layout_toEndOf="@+id/imageView"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button7"
@@ -47,7 +47,7 @@
             android:layout_alignStart="@+id/button5"
             android:layout_below="@+id/button5"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button8"
@@ -56,7 +56,7 @@
             android:layout_alignStart="@+id/button5"
             android:layout_below="@+id/button7"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button6"
@@ -65,7 +65,7 @@
             android:layout_alignStart="@+id/button5"
             android:layout_below="@+id/button9"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button12"
@@ -74,7 +74,7 @@
             android:layout_alignStart="@+id/button5"
             android:layout_below="@+id/button11"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button13"
@@ -83,7 +83,7 @@
             android:layout_alignStart="@+id/button5"
             android:layout_below="@+id/button12"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button11"
@@ -92,7 +92,7 @@
             android:layout_alignStart="@+id/button5"
             android:layout_below="@+id/button6"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button10"
@@ -102,7 +102,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginEnd="39dp"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button14"
@@ -111,7 +111,7 @@
             android:layout_alignStart="@+id/button10"
             android:layout_below="@+id/button5"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button16"
@@ -120,7 +120,7 @@
             android:layout_alignStart="@+id/button10"
             android:layout_alignTop="@+id/button5"
             android:background="@drawable/parking_lot"
-            android:text="Free" />
+            android:text="@string/free_lot" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -154,9 +154,9 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/button11"
             android:layout_toStartOf="@+id/imageView28"
-            android:text="Media Hall"
-            android:textColor="#adadad"
-            tools:text="Media Hall" />
+            android:text="@string/media_hall"
+            android:textColor="@color/exit"
+            tools:text="@string/media_hall" />
 
     </RelativeLayout>
 </ScrollView>

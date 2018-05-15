@@ -3,6 +3,13 @@
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="free_lot">Free</string>
+    <string name="media_hall">Media Hall</string>
+    <string name="exit_gate">To Exit Gate</string>
+    <string name="jip_store">JIP Store</string>
+
+
+
 
     <string name="title_activity_register_screen">register_screen</string>
     <string name="main_window_title">Available parking lots</string>

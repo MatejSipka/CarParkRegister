@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#777777">
+        android:background="@color/background">
 
         <ImageView
             android:id="@+id/imageView8"
@@ -17,7 +17,7 @@
             android:layout_height="580dp"
             android:layout_alignParentEnd="true"
             android:background="@color/login_black"
-            android:src="#b8b8b8" />
+            android:src="@color/login_src" />
 
         <ImageView
             android:id="@+id/imageView10"
@@ -52,7 +52,7 @@
             android:layout_marginTop="29dp"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot_full"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/button25"
@@ -64,7 +64,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/parking_lot"
             android:rotation="90"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR13"
@@ -75,7 +75,7 @@
             android:layout_marginStart="64dp"
             android:background="@drawable/parking_lot_full"
             android:rotation="90"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR2"
@@ -84,7 +84,7 @@
             android:layout_below="@+id/GAR1"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR6"
@@ -93,7 +93,7 @@
             android:layout_below="@+id/GAR5"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR8"
@@ -102,7 +102,7 @@
             android:layout_below="@+id/GAR7"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR4"
@@ -111,7 +111,7 @@
             android:layout_below="@+id/GAR3"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR12"
@@ -120,7 +120,7 @@
             android:layout_below="@+id/GAR10"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR7"
@@ -129,7 +129,7 @@
             android:layout_below="@+id/GAR6"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR3"
@@ -138,7 +138,7 @@
             android:layout_below="@+id/GAR2"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR5"
@@ -147,7 +147,7 @@
             android:layout_below="@+id/GAR4"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR10"
@@ -156,7 +156,7 @@
             android:layout_below="@+id/GAR9"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/GAR9"
@@ -165,7 +165,7 @@
             android:layout_below="@+id/GAR8"
             android:layout_toStartOf="@+id/imageView8"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <ImageView
             android:id="@+id/imageView20"
@@ -198,9 +198,9 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/imageView32"
             android:layout_alignTop="@+id/GAR12"
-            android:text="to Exit Gate"
-            android:textColor="#adadad"
-            tools:text="to Exit Gate" />
+            android:text="@string/exit_gate"
+            android:textColor="@color/exit"
+            tools:text="@string/exit_gate" />
 
 
     </RelativeLayout>

@@ -22,12 +22,12 @@ class ParkingReservationService(activity: Activity, context: Context) {
     private var context: Context = context
 
     fun handleWeekButtonsTextColor(clicked: Button) {
-        activity.findViewById<Button>(R.id.week_mon).setTextColor(Color.parseColor("#ffffff"))
-        activity.findViewById<Button>(R.id.week_tues).setTextColor(Color.parseColor("#ffffff"))
-        activity.findViewById<Button>(R.id.week_wed).setTextColor(Color.parseColor("#ffffff"))
-        activity.findViewById<Button>(R.id.week_thurs).setTextColor(Color.parseColor("#ffffff"))
-        activity.findViewById<Button>(R.id.week_fri).setTextColor(Color.parseColor("#ffffff"))
-        clicked.setTextColor(Color.parseColor("#DD4C39"))
+        activity.findViewById<Button>(R.id.week_mon).setTextColor(ContextCompat.getColor(context, R.color.day))
+        activity.findViewById<Button>(R.id.week_tues).setTextColor(ContextCompat.getColor(context, R.color.day))
+        activity.findViewById<Button>(R.id.week_wed).setTextColor(ContextCompat.getColor(context, R.color.day))
+        activity.findViewById<Button>(R.id.week_thurs).setTextColor(ContextCompat.getColor(context, R.color.day))
+        activity.findViewById<Button>(R.id.week_fri).setTextColor(ContextCompat.getColor(context, R.color.day))
+        clicked.setTextColor(ContextCompat.getColor(context, R.color.day_selected))
     }
 
     fun fetchLotsForSelectedDay(day: WeekDays) {
@@ -60,26 +60,26 @@ class ParkingReservationService(activity: Activity, context: Context) {
         when (day) {
             Calendar.MONDAY -> {
                 activity.findViewById<Button>(R.id.week_mon).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
-                activity.findViewById<Button>(R.id.week_mon).setTextColor(Color.parseColor("#DD4C39"))
+                activity.findViewById<Button>(R.id.week_mon).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
             }
             Calendar.TUESDAY -> {
                 activity.findViewById<Button>(R.id.week_tues).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
-                activity.findViewById<Button>(R.id.week_tues).setTextColor(Color.parseColor("#DD4C39"))
+                activity.findViewById<Button>(R.id.week_tues).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
             }
             Calendar.WEDNESDAY -> {
                 activity.findViewById<Button>(R.id.week_wed).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
-                activity.findViewById<Button>(R.id.week_wed).setTextColor(Color.parseColor("#DD4C39"))
+                activity.findViewById<Button>(R.id.week_wed).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
             }
             Calendar.THURSDAY -> {
                 activity.findViewById<Button>(R.id.week_thurs).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
-                activity.findViewById<Button>(R.id.week_thurs).setTextColor(Color.parseColor("#DD4C39"))
+                activity.findViewById<Button>(R.id.week_thurs).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
             }
             Calendar.FRIDAY -> {
                 activity.findViewById<Button>(R.id.week_fri).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
-                activity.findViewById<Button>(R.id.week_fri).setTextColor(Color.parseColor("#DD4C39"))
+                activity.findViewById<Button>(R.id.week_fri).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
             }
             else -> {
-                activity.findViewById<Button>(R.id.week_mon).setTextColor(Color.parseColor("#DD4C39"))
+                activity.findViewById<Button>(R.id.week_mon).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
             }
         }
     }

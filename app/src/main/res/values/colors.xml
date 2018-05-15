@@ -9,4 +9,9 @@
     <color name="login_black">#000</color>
     <color name="free_parking_lot">#44f100</color>
     <color name="lots_grass">#2c6915</color>
+    <color name="exit">#adadad</color>
+    <color name="background">#777777</color>
+    <color name="login_src">#b8b8b8</color>
+    <color name="day">#ffffff</color>
+    <color name="day_selected">#DD4C39</color>
 </resources>

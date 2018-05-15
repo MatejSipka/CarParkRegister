@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#777777"
+        android:background="@color/background"
         tools:context="com.app.carparkregister.TabFragmentThree">
 
         <Button
@@ -19,7 +19,7 @@
             android:layout_marginStart="0dp"
             android:layout_toEndOf="@+id/jip_imageView38"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/jip_button40"
@@ -28,7 +28,7 @@
             android:layout_alignStart="@+id/jip_button41"
             android:layout_below="@+id/jip_button43"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
 
         <Button
@@ -38,7 +38,7 @@
             android:layout_alignStart="@+id/jip_button41"
             android:layout_below="@+id/jip_button41"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/jip_button43"
@@ -47,7 +47,7 @@
             android:layout_alignStart="@+id/jip_button41"
             android:layout_below="@+id/jip_button42"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/jip_button44"
@@ -56,7 +56,7 @@
             android:layout_alignStart="@+id/jip_button41"
             android:layout_below="@+id/jip_button40"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/jip_button45"
@@ -65,7 +65,7 @@
             android:layout_alignStart="@+id/jip_button41"
             android:layout_below="@+id/jip_button47"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/jip_button46"
@@ -74,7 +74,7 @@
             android:layout_alignStart="@+id/jip_button41"
             android:layout_below="@+id/jip_button45"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
         <Button
             android:id="@+id/jip_button47"
@@ -83,7 +83,7 @@
             android:layout_alignStart="@+id/jip_button41"
             android:layout_below="@+id/jip_button44"
             android:background="@drawable/parking_lot"
-            android:text="Button" />
+            android:text="@string/free_lot" />
 
 
         <ImageView
@@ -108,9 +108,9 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/jip_imageView38"
             android:layout_centerHorizontal="true"
-            android:text="JIP Store"
-            android:textColor="#adadad"
-            tools:text="JIP Store" />
+            android:text="@string/jip_store"
+            android:textColor="@color/exit"
+            tools:text="@string/jip_store" />
 
     </RelativeLayout>
 </ScrollView>
