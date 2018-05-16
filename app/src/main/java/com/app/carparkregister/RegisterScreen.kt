@@ -87,7 +87,7 @@ class RegisterScreen : AppCompatActivity() {
 
         val user = UserDao(email, fullName, phone)
         val ref = database.getReference("users/")
-        val key = ref.push().key
+        val key = email.replace(".","_")
         ref.child(key).setValue(user)
     }
 

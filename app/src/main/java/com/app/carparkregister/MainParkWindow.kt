@@ -152,12 +152,12 @@ class MainParkWindow : AppCompatActivity() {
         var database = FirebaseDatabase.getInstance()
         var storedCars: ArrayList<CarDao>
 
-        database.getReference("users/").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object : ValueEventListener {
+        database.getReference("users/" + email!!.replace(".","_")).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                var userDao = snapshot.children.first().getValue(UserDao::class.java)
+                var userDao = snapshot.getValue(UserDao::class.java)
 
                 if (userDao?.cars == null) {
                     storedCars = arrayListOf(CarDao())
