@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Toast
 import com.app.carparkregister.domain.CarDao
 import com.app.carparkregister.domain.WeekDays
 import com.app.carparkregister.utils.CommonUtils
@@ -22,16 +23,12 @@ class ParkingReservationService(activity: Activity, context: Context) {
 
     private var activity: Activity = activity
     private var context: Context = context
-    private var storedCars: ArrayList<CarDao> = arrayListOf(CarDao())
 
-    public fun getStoredCars(): ArrayList<CarDao> {
-        return storedCars
+    private var selectetDay:WeekDays? = null
+
+    public fun setSelectedDay(day:WeekDays){
+        this.selectetDay = day
     }
-
-    public fun setStoredCars(storedCars: ArrayList<CarDao>) {
-        this.storedCars = storedCars
-    }
-
 
     fun handleWeekButtonsTextColor(clicked: Button) {
         activity.findViewById<Button>(R.id.week_mon).setTextColor(ContextCompat.getColor(context, R.color.day))
@@ -74,23 +71,17 @@ class ParkingReservationService(activity: Activity, context: Context) {
                 val resID = context.getResources().getIdentifier("GAR" + i, "id", context.packageName)
                 view.findViewById<Button>(resID).setOnClickListener {
                     if (storedCars.size > 1) {
-
                         val builderSingle = AlertDialog.Builder(context)
                         builderSingle.setTitle("Select Your Car")
 
-                        val arrayAdapter = ArrayAdapter<String>(context, android.R.layout.select_dialog_singlechoice)
+                        val arrayAdapter = ArrayAdapter<String>(context, android.R.layout.select_dialog_item)
                         for (car: CarDao in storedCars) {
                             arrayAdapter.add(car.color + " " + car.model + " " + car.spz)
                         }
 
                         builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
                         builderSingle.setAdapter(arrayAdapter) { dialog, which ->
-                            val strName = arrayAdapter.getItem(which)
-                            val builderInner = AlertDialog.Builder(context)
-                            builderInner.setMessage(strName)
-                            builderInner.setTitle("Your Selected Item is")
-                            builderInner.setPositiveButton("Ok") { dialog, which -> dialog.dismiss() }
-                            builderInner.show()
+
                         }
                         builderSingle.show()
                     }

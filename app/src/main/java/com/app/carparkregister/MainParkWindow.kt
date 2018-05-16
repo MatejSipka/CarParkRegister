@@ -81,9 +81,9 @@ class MainParkWindow : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var userDao = snapshot.children.first().getValue(UserDao::class.java)
                 if (userDao?.cars == null) {
-                    parkService!!.setStoredCars(arrayListOf(CarDao()))
+                    StoredCars.instance.setStoredCars(arrayListOf(CarDao()))
                 } else {
-                    parkService!!.setStoredCars(userDao?.cars!!)
+                    StoredCars.instance.setStoredCars(userDao?.cars!!)
                 }
             }
         })
@@ -101,9 +101,9 @@ class MainParkWindow : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var userDao = snapshot.children.first().getValue(UserDao::class.java)
                 if (userDao?.cars == null) {
-                    parkService!!.setStoredCars(arrayListOf(CarDao()))
+                    StoredCars.instance.setStoredCars(arrayListOf(CarDao()))
                 } else {
-                    parkService!!.setStoredCars(userDao?.cars!!)
+                    StoredCars.instance.setStoredCars(userDao?.cars!!)
                 }
                 parkService!!.updateCarsInUI(1, sectionsPagerAdapter!!.getItem(0).view!!, userDao?.cars!!)
             }

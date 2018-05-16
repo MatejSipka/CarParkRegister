@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.tab_fragment_three.view.*
 class TabFragmentThree : Fragment() {
 
 
+
     var prs: ParkingReservationService? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -21,7 +22,7 @@ class TabFragmentThree : Fragment() {
         var view: View = inflater!!.inflate(R.layout.tab_fragment_three, container, false)
 
         prs = ParkingReservationService(activity, context)
-        prs!!.updateCarsInUI(3, view, prs!!.getStoredCars())
+        prs!!.updateCarsInUI(3, view, StoredCars.instance.getStoredCars())
 
         return view
     }

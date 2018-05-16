@@ -4,10 +4,6 @@ import android.R
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.app.AlertDialog
-import android.widget.ArrayAdapter
-import android.widget.Button
-import com.app.carparkregister.domain.CarDao
 
 class SectionsPageAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
 
@@ -30,7 +26,5 @@ class SectionsPageAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         return fragmentList.get(position)
     }
-
-
 
 }
