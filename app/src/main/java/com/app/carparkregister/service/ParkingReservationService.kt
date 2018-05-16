@@ -75,29 +75,46 @@ class ParkingReservationService(activity: Activity, context: Context) {
 
     fun updateCarsInUI(whichFragmentTab: Int, view: View, storedCars: ArrayList<CarDao>, user: UserDao?) {
 
+        var lotsNumber = 0
+        var lotsId = ""
         if (whichFragmentTab == 1) {
-            for (i in 1..13) {
-                val resID = context.getResources().getIdentifier("GAR" + i, "id", context.packageName)
-                view.findViewById<Button>(resID).setOnClickListener {
-                    if (storedCars.size > 1) {
-                        val builderSingle = AlertDialog.Builder(context)
-                        builderSingle.setTitle("Select Your Car")
+            lotsNumber = 13
+            lotsId = "GAR"
+        } else if (whichFragmentTab == 2) {
+            lotsNumber = 12
+            lotsId = "MH"
+        } else {
+            lotsNumber = 8
+            lotsId = "JIP"
+        }
 
-                        val arrayAdapter = ArrayAdapter<String>(context, android.R.layout.select_dialog_item)
-                        for (car: CarDao in storedCars) {
-                            arrayAdapter.add(car.color + " " + car.model + " " + car.spz)
-                        }
+        for (i in 1..lotsNumber) {
+            val resID = context.getResources().getIdentifier(lotsId + i, "id", context.packageName)
+            view.findViewById<Button>(resID).setOnClickListener {
+                if (storedCars.size > 1) {
+                    val builderSingle = AlertDialog.Builder(context)
+                    builderSingle.setTitle("Select Your Car")
 
-                        builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
-                        builderSingle.setAdapter(arrayAdapter) { dialog, which ->
-
-                            sendReservationToDB(prepareLotObject(user!!, user.cars!!.get(which), "GAR" + i))
-                        }
-                        builderSingle.show()
+                    val arrayAdapter = ArrayAdapter<String>(context, android.R.layout.select_dialog_item)
+                    for (car: CarDao in storedCars) {
+                        arrayAdapter.add(car.color + " " + car.model + " - " + car.spz)
                     }
+
+                    builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+                    builderSingle.setAdapter(arrayAdapter) { dialog, which ->
+
+                        sendReservationToDB(prepareLotObject(user!!, storedCars.get(which), lotsId + i))
+                    }
+                    builderSingle.show()
+                } else if (storedCars.size == 1) {
+                    sendReservationToDB(prepareLotObject(user!!, storedCars.get(0), lotsId + i))
+                } else {
+                    Toast.makeText(context, "You don't have any car.", Toast.LENGTH_LONG)
+                            .show()
                 }
             }
         }
+
     }
 
     fun sendReservationToDB(lotObject: ParkingLot) {

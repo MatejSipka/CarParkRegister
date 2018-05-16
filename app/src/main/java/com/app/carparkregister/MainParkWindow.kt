@@ -52,6 +52,7 @@ class MainParkWindow : AppCompatActivity() {
 
         initialCarFetch()
         setCarsListener()
+        setLotsListener()
 
         week_mon.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_mon)
@@ -88,12 +89,32 @@ class MainParkWindow : AppCompatActivity() {
                 var userDao = snapshot.children.first().getValue(UserDao::class.java)
                 StoredData.instance.setUser(userDao!!)
                 if (userDao?.cars == null) {
-                    StoredData.instance.setStoredCars(arrayListOf(CarDao()))
+                    StoredData.instance.setStoredCars(ArrayList<CarDao>())
                 } else {
                     StoredData.instance.setStoredCars(userDao?.cars!!)
                 }
             }
         })
+    }
+
+    fun setLotsListener() {
+
+        var database = FirebaseDatabase.getInstance()
+
+        database.getReference("days/" + StoredData.instance.getDaySelected()).addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var takenLots = snapshot.children
+                for(lot:DataSnapshot in takenLots){
+
+
+
+                }
+            }
+        })
+
     }
 
     fun initialCarFetch() {
@@ -109,11 +130,13 @@ class MainParkWindow : AppCompatActivity() {
                 var userDao = snapshot.children.first().getValue(UserDao::class.java)
                 StoredData.instance.setUser(userDao!!)
                 if (userDao?.cars == null) {
-                    StoredData.instance.setStoredCars(arrayListOf(CarDao()))
+                    StoredData.instance.setStoredCars(ArrayList<CarDao>())
                 } else {
                     StoredData.instance.setStoredCars(userDao?.cars!!)
                 }
-                parkService!!.updateCarsInUI(1, sectionsPagerAdapter!!.getItem(0).view!!, userDao?.cars!!, userDao)
+                parkService!!.updateCarsInUI(1, sectionsPagerAdapter!!.getItem(0).view!!, StoredData.instance.getStoredCars(), userDao)
+                parkService!!.updateCarsInUI(2, sectionsPagerAdapter!!.getItem(1).view!!, StoredData.instance.getStoredCars(), userDao)
+//                parkService!!.updateCarsInUI(3, sectionsPagerAdapter!!.getItem(2).view!!, StoredData.instance.getStoredCars(), userDao)
             }
         })
     }

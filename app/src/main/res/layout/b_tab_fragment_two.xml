@@ -12,90 +12,90 @@
         tools:context="com.app.carparkregister.TabFragmentTwo">
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/MH1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/imageView"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot"
-            android:textColor="@color/free_parking_lot"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="@color/free_parking_lot" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/MH5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button5"
-            android:layout_below="@+id/button8"
+            android:layout_alignStart="@+id/MH2"
+            android:layout_below="@+id/MH4"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/MH2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/button10"
+            android:layout_below="@+id/MH10"
             android:layout_toEndOf="@+id/imageView"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/MH3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button5"
-            android:layout_below="@+id/button5"
+            android:layout_alignStart="@+id/MH2"
+            android:layout_below="@+id/MH2"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/MH4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button5"
-            android:layout_below="@+id/button7"
+            android:layout_alignStart="@+id/MH2"
+            android:layout_below="@+id/MH3"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/MH6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button5"
-            android:layout_below="@+id/button9"
+            android:layout_alignStart="@+id/MH2"
+            android:layout_below="@+id/MH5"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/MH8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button5"
-            android:layout_below="@+id/button11"
+            android:layout_alignStart="@+id/MH2"
+            android:layout_below="@+id/MH7"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/MH9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button5"
-            android:layout_below="@+id/button12"
+            android:layout_alignStart="@+id/MH2"
+            android:layout_below="@+id/MH8"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/MH7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button5"
-            android:layout_below="@+id/button6"
+            android:layout_alignStart="@+id/MH2"
+            android:layout_below="@+id/MH6"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/MH10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -105,20 +105,20 @@
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/MH12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button10"
-            android:layout_below="@+id/button5"
+            android:layout_alignStart="@+id/MH10"
+            android:layout_below="@+id/MH2"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/button16"
+            android:id="@+id/MH11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button10"
-            android:layout_alignTop="@+id/button5"
+            android:layout_alignStart="@+id/MH10"
+            android:layout_alignTop="@+id/MH2"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
@@ -136,7 +136,7 @@
             android:layout_height="260dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="-40dp"
-            android:layout_toEndOf="@+id/button10"
+            android:layout_toEndOf="@+id/MH10"
             android:src="@color/lots_grass" />
 
         <ImageView
@@ -144,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/button6"
+            android:layout_below="@+id/MH6"
             android:rotation="-90"
             android:src="@drawable/ic_arrow_downward_black_24dp" />
 
@@ -152,7 +152,7 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button11"
+            android:layout_alignBaseline="@+id/MH7"
             android:layout_toStartOf="@+id/imageView28"
             android:text="@string/media_hall"
             android:textColor="@color/exit"

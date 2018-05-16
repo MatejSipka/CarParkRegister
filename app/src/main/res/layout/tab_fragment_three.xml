@@ -12,7 +12,7 @@
         tools:context="com.app.carparkregister.TabFragmentThree">
 
         <Button
-            android:id="@+id/jip_button41"
+            android:id="@+id/JIP1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -22,66 +22,66 @@
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/jip_button40"
+            android:id="@+id/JIP4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/jip_button41"
-            android:layout_below="@+id/jip_button43"
+            android:layout_alignStart="@+id/JIP1"
+            android:layout_below="@+id/JIP3"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
 
         <Button
-            android:id="@+id/jip_button42"
+            android:id="@+id/JIP2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/jip_button41"
-            android:layout_below="@+id/jip_button41"
+            android:layout_alignStart="@+id/JIP1"
+            android:layout_below="@+id/JIP1"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/jip_button43"
+            android:id="@+id/JIP3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/jip_button41"
-            android:layout_below="@+id/jip_button42"
+            android:layout_alignStart="@+id/JIP1"
+            android:layout_below="@+id/JIP2"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/jip_button44"
+            android:id="@+id/JIP5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/jip_button41"
-            android:layout_below="@+id/jip_button40"
+            android:layout_alignStart="@+id/JIP1"
+            android:layout_below="@+id/JIP4"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/jip_button45"
+            android:id="@+id/JIP7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/jip_button41"
-            android:layout_below="@+id/jip_button47"
+            android:layout_alignStart="@+id/JIP1"
+            android:layout_below="@+id/JIP6"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/jip_button46"
+            android:id="@+id/JIP8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/jip_button41"
-            android:layout_below="@+id/jip_button45"
+            android:layout_alignStart="@+id/JIP1"
+            android:layout_below="@+id/JIP7"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
         <Button
-            android:id="@+id/jip_button47"
+            android:id="@+id/JIP6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/jip_button41"
-            android:layout_below="@+id/jip_button44"
+            android:layout_alignStart="@+id/JIP1"
+            android:layout_below="@+id/JIP5"
             android:background="@drawable/parking_lot"
             android:text="@string/free_lot" />
 
