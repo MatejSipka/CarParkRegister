@@ -5,11 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import com.app.carparkregister.service.ParkingReservationService
-import kotlinx.android.synthetic.main.tab_fragment_three.*
-import kotlinx.android.synthetic.main.tab_fragment_three.view.*
 
 class TabFragmentThree : Fragment() {
 
@@ -22,7 +18,7 @@ class TabFragmentThree : Fragment() {
         var view: View = inflater!!.inflate(R.layout.tab_fragment_three, container, false)
 
         prs = ParkingReservationService(activity, context)
-        prs!!.updateCarsInUI(3, view, StoredCars.instance.getStoredCars())
+        prs!!.updateCarsInUI(3, view, StoredData.instance.getStoredCars(), StoredData.instance.getUser())
 
         return view
     }

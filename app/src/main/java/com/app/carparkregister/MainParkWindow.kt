@@ -16,6 +16,7 @@ import android.net.ConnectivityManager
 import android.widget.Toast
 import com.app.carparkregister.domain.CarDao
 import com.app.carparkregister.domain.UserDao
+import com.app.carparkregister.domain.WeekDays
 import com.app.carparkregister.service.ParkingReservationService
 import com.app.carparkregister.utils.CommonUtils
 import com.google.firebase.database.DataSnapshot
@@ -54,18 +55,23 @@ class MainParkWindow : AppCompatActivity() {
 
         week_mon.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_mon)
+            StoredData.instance.setDaySelected(WeekDays.MON)
         }
         week_tues.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_tues)
+            StoredData.instance.setDaySelected(WeekDays.TUES)
         }
         week_wed.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_wed)
+            StoredData.instance.setDaySelected(WeekDays.WED)
         }
         week_thurs.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_thurs)
+            StoredData.instance.setDaySelected(WeekDays.THURS)
         }
         week_fri.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_fri)
+            StoredData.instance.setDaySelected(WeekDays.FRI)
         }
 
     }
@@ -80,10 +86,11 @@ class MainParkWindow : AppCompatActivity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 var userDao = snapshot.children.first().getValue(UserDao::class.java)
+                StoredData.instance.setUser(userDao!!)
                 if (userDao?.cars == null) {
-                    StoredCars.instance.setStoredCars(arrayListOf(CarDao()))
+                    StoredData.instance.setStoredCars(arrayListOf(CarDao()))
                 } else {
-                    StoredCars.instance.setStoredCars(userDao?.cars!!)
+                    StoredData.instance.setStoredCars(userDao?.cars!!)
                 }
             }
         })
@@ -100,12 +107,13 @@ class MainParkWindow : AppCompatActivity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 var userDao = snapshot.children.first().getValue(UserDao::class.java)
+                StoredData.instance.setUser(userDao!!)
                 if (userDao?.cars == null) {
-                    StoredCars.instance.setStoredCars(arrayListOf(CarDao()))
+                    StoredData.instance.setStoredCars(arrayListOf(CarDao()))
                 } else {
-                    StoredCars.instance.setStoredCars(userDao?.cars!!)
+                    StoredData.instance.setStoredCars(userDao?.cars!!)
                 }
-                parkService!!.updateCarsInUI(1, sectionsPagerAdapter!!.getItem(0).view!!, userDao?.cars!!)
+                parkService!!.updateCarsInUI(1, sectionsPagerAdapter!!.getItem(0).view!!, userDao?.cars!!, userDao)
             }
         })
     }
