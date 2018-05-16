@@ -15,7 +15,7 @@ class TabFragmentOne : Fragment() {
         var view: View = inflater!!.inflate(R.layout.tab_fragment_one, container, false)
 
         val prs = ParkingReservationService(activity, context)
-        prs!!.updateCarsInUI(1, view, StoredData.instance.getStoredCars(), StoredData.instance.getUser())
+        prs!!.updateCarsInUI(1, view)
 
         return view
     }

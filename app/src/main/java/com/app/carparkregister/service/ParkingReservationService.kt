@@ -9,10 +9,6 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
-import com.app.carparkregister.domain.CarDao
-import com.app.carparkregister.domain.ParkingLot
-import com.app.carparkregister.domain.UserDao
-import com.app.carparkregister.domain.WeekDays
 import com.app.carparkregister.utils.CommonUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,7 +17,7 @@ import com.google.firebase.database.ValueEventListener
 import java.util.Calendar
 import com.google.gson.Gson
 import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
+import com.app.carparkregister.domain.*
 import com.google.gson.reflect.TypeToken
 
 
@@ -30,11 +26,6 @@ class ParkingReservationService(activity: Activity, context: Context) {
     private var activity: Activity = activity
     private var context: Context = context
 
-    private var selectetDay: WeekDays? = null
-
-    public fun setSelectedDay(day: WeekDays) {
-        this.selectetDay = day
-    }
 
     fun handleWeekButtonsTextColor(clicked: Button) {
         activity.findViewById<Button>(R.id.week_mon).setTextColor(ContextCompat.getColor(context, R.color.day))
@@ -77,7 +68,7 @@ class ParkingReservationService(activity: Activity, context: Context) {
         return lot
     }
 
-    fun updateCarsInUI(whichFragmentTab: Int, view: View, storedCarsOld: ArrayList<CarDao>, user: UserDao?) {
+    fun updateCarsInUI(whichFragmentTab: Int, view: View) {
 
         var lotsNumber = 0
         var lotsId = ""
@@ -96,32 +87,79 @@ class ParkingReservationService(activity: Activity, context: Context) {
         val gson = Gson()
         val json = mPrefs.getString("storedCars", "")
         val type = object : TypeToken<ArrayList<CarDao>>() {}.type
-        val storedCars = gson.fromJson<ArrayList<CarDao>>(json,type)
+        val storedCars = gson.fromJson<ArrayList<CarDao>>(json, type)
+        val jsonUser = mPrefs.getString("user", "")
+        val user = gson.fromJson(jsonUser, UserDao::class.java)
+        val selectedDayjson = mPrefs.getString("selectedDay", "")
+        val selectedDay = gson.fromJson(selectedDayjson, WeekDays::class.java)
+        val storedReservationDayjson = mPrefs.getString("storedReservationDay$selectedDay", "")
+        val storedReservationDay = gson.fromJson(storedReservationDayjson, DayDto::class.java)
+
+        var curentLotCar: CarDao? = null
+        var curentLotUsr: UserDao? = null
 
         for (i in 1..lotsNumber) {
             val resID = context.getResources().getIdentifier(lotsId + i, "id", context.packageName)
-            view.findViewById<Button>(resID).setOnClickListener {
-                if (storedCars.size > 1) {
-                    val builderSingle = AlertDialog.Builder(context)
-                    builderSingle.setTitle("Select Your Car")
+            var lotButton = view.findViewById<Button>(resID)
 
-                    val arrayAdapter = ArrayAdapter<String>(context, android.R.layout.select_dialog_item)
-                    for (car: CarDao in storedCars) {
-                        arrayAdapter.add(car.color + " " + car.model + " - " + car.spz)
+            if (storedReservationDay != null) {
+
+                lotButton.text = "Free"
+                lotButton.setTextColor(ContextCompat.getColor(context, R.color.free_parking_lot))
+
+                var uIlotID = lotsId + i
+                var lotsForDay = storedReservationDay.lots
+                for (lot in lotsForDay!!) {
+                    if (lot.lotId.equals(uIlotID)) {
+                        curentLotUsr = lot.takenBy
+                        curentLotCar = lot.carParked
+                        lotButton.text = lot.carParked?.spz
+                        lotButton.setTextColor(ContextCompat.getColor(context, R.color.day_selected))
+
                     }
-
-                    builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
-                    builderSingle.setAdapter(arrayAdapter) { dialog, which ->
-
-                        sendReservationToDB(prepareLotObject(user!!, storedCars.get(which), lotsId + i))
-                    }
-                    builderSingle.show()
-                } else if (storedCars.size == 1) {
-                    sendReservationToDB(prepareLotObject(user!!, storedCars.get(0), lotsId + i))
-                } else {
-                    Toast.makeText(context, "You don't have any car.", Toast.LENGTH_LONG)
-                            .show()
                 }
+            }
+
+            lotButton.setOnClickListener {
+
+                if (lotButton.text.equals("Free")) {
+                    if (storedCars.size > 1) {
+                        val builderSingle = AlertDialog.Builder(context)
+                        builderSingle.setTitle("Select Your Car")
+
+                        val arrayAdapter = ArrayAdapter<String>(context, android.R.layout.select_dialog_item)
+                        for (car: CarDao in storedCars) {
+                            arrayAdapter.add(car.toString())
+                        }
+
+                        builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+                        builderSingle.setAdapter(arrayAdapter) { dialog, which ->
+
+                            sendReservationToDB(prepareLotObject(user!!, storedCars.get(which), lotsId + i))
+                        }
+                        builderSingle.show()
+                    } else if (storedCars.size == 1) {
+
+                        var car = storedCars.get(0)
+                        if (car.model.isBlank() && car.model.isBlank()) {
+                            Toast.makeText(context, "You don't have any car.", Toast.LENGTH_LONG)
+                                    .show()
+                        } else {
+                            sendReservationToDB(prepareLotObject(user!!, storedCars.get(0),
+                                    lotsId + i))
+                        }
+                    }
+                } else {
+                    val alertBuilder = AlertDialog.Builder(context)
+                    alertBuilder.setTitle("Lot is taken.")
+                    alertBuilder.setMessage("By colleague: " + curentLotUsr.toString()
+                            + "\n"
+                            + "\n"
+                            + "Car: " + curentLotCar.toString())
+                    alertBuilder.setNegativeButton("ok") { dialog, which -> dialog.dismiss() }
+                    alertBuilder.show()
+                }
+
             }
         }
 

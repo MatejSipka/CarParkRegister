@@ -5,4 +5,8 @@ data class UserDao(
         val fullName: String = "",
         val phone: String = "",
         var cars: ArrayList<CarDao>? = null
-)
+){
+    override fun toString(): String {
+        return fullName + ", " + phone + ", " + email
+    }
+}

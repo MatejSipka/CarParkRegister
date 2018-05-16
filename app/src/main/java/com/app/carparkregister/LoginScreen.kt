@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login_screen.*
 
@@ -65,6 +66,7 @@ class LoginScreen : AppCompatActivity() {
                     finish()
                 }
                 .addOnFailureListener {
+                    Toast.makeText(this@LoginScreen, "Invalid User Name or Password.", Toast.LENGTH_LONG).show()
                 }
     }
 

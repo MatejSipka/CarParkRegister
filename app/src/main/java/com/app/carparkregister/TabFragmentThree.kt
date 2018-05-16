@@ -9,16 +9,15 @@ import com.app.carparkregister.service.ParkingReservationService
 
 class TabFragmentThree : Fragment() {
 
-
-
     var prs: ParkingReservationService? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+
         var view: View = inflater!!.inflate(R.layout.tab_fragment_three, container, false)
 
         prs = ParkingReservationService(activity, context)
-        prs!!.updateCarsInUI(3, view, StoredData.instance.getStoredCars(), StoredData.instance.getUser())
+        prs!!.updateCarsInUI(3, view)
 
         return view
     }

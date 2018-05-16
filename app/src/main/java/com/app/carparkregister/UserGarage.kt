@@ -22,16 +22,16 @@ import com.google.firebase.database.ValueEventListener
 import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
 import android.view.LayoutInflater
 import android.support.v7.app.AlertDialog
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_car_details_window.*
-import org.w3c.dom.Text
-import android.content.SharedPreferences
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_register_screen.*
 
 
 class UserGarage : AppCompatActivity() {
+
+    val REQUIRED_FIELD = "This field is required."
 
     private lateinit var carListView: RecyclerView
     lateinit var storedCars: ArrayList<CarDao>
@@ -128,7 +128,10 @@ class UserGarage : AppCompatActivity() {
                     var car: CarDao = CarDao(mView.findViewById<EditText>(R.id.car_details_model).text.toString()
                             , mView.findViewById<EditText>(R.id.car_details_color).text.toString(),
                             mView.findViewById<EditText>(R.id.car_details_spz).text.toString())
-                    submitNewCar(car)
+                    if (doValidation(mView.findViewById<EditText>(R.id.car_details_model).text.toString(),
+                                    mView.findViewById<EditText>(R.id.car_details_color).text.toString(), mView)) {
+                        submitNewCar(car)
+                    }
                     alertDialogAndroid.hide()
                 }
 
@@ -140,6 +143,20 @@ class UserGarage : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+    fun doValidation(model: String, color: String, view: View): Boolean {
+        if (model.isBlank()) {
+            view.findViewById<EditText>(R.id.car_details_model).setError(REQUIRED_FIELD)
+            return false
+        }
+        if (color.isBlank()) {
+            view.findViewById<EditText>(R.id.car_details_color).setError(REQUIRED_FIELD)
+            return false
+        }
+        return true
+    }
+
 
     override fun onBackPressed() {
         goBack()
