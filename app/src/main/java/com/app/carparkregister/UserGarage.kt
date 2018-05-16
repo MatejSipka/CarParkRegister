@@ -1,5 +1,6 @@
 package com.app.carparkregister
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -26,6 +27,8 @@ import android.widget.EditText
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_car_details_window.*
 import org.w3c.dom.Text
+import android.content.SharedPreferences
+import com.google.gson.Gson
 
 
 class UserGarage : AppCompatActivity() {
@@ -42,7 +45,6 @@ class UserGarage : AppCompatActivity() {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()?.setDisplayShowHomeEnabled(true)
 
-
         // USER SHOULD NOT BE NULL SINCE HE IS LOGGED IN
         var email = FirebaseAuth.getInstance().currentUser!!.email
         var database = FirebaseDatabase.getInstance()
@@ -58,6 +60,13 @@ class UserGarage : AppCompatActivity() {
                 } else {
                     storedCars = userDao?.cars!!
                 }
+
+                val mPrefs = getPreferences(Context.MODE_PRIVATE)
+                val prefsEditor = mPrefs.edit()
+                val gson = Gson()
+                val storedCarsJson = gson.toJson(storedCars)
+                prefsEditor.putString("storedCars", storedCarsJson)
+                prefsEditor.commit()
 
                 carListView = findViewById(R.id.car_list_garage)
                 val adapter = GarageListAdapter(storedCars)
@@ -115,9 +124,9 @@ class UserGarage : AppCompatActivity() {
                 val alertDialogAndroid = alertDialogBuilderUserInput.create()
                 alertDialogAndroid.show()
 
-                mView.findViewById<Button>(R.id.car_details_submit).setOnClickListener{
-                    var car:CarDao = CarDao(mView.findViewById<EditText>(R.id.car_details_model).text.toString()
-                            ,mView.findViewById<EditText>(R.id.car_details_color).text.toString(),
+                mView.findViewById<Button>(R.id.car_details_submit).setOnClickListener {
+                    var car: CarDao = CarDao(mView.findViewById<EditText>(R.id.car_details_model).text.toString()
+                            , mView.findViewById<EditText>(R.id.car_details_color).text.toString(),
                             mView.findViewById<EditText>(R.id.car_details_spz).text.toString())
                     submitNewCar(car)
                     alertDialogAndroid.hide()
@@ -137,7 +146,7 @@ class UserGarage : AppCompatActivity() {
         super.onBackPressed()
     }
 
-    fun submitNewCar(car:CarDao){
+    fun submitNewCar(car: CarDao) {
         var storedCars: ArrayList<CarDao>? = null
         // USER SHOULD NOT BE NULL SINCE HE IS LOGGED IN
         var email = FirebaseAuth.getInstance().currentUser!!.email
@@ -152,7 +161,7 @@ class UserGarage : AppCompatActivity() {
                 var userDao = snapshot.children.first().getValue(UserDao::class.java)
                 storedCars = userDao?.cars
                 var size = storedCars?.size
-                if(storedCars == null){
+                if (storedCars == null) {
                     size = 0
                 }
                 storedCars?.add(car)

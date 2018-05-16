@@ -23,6 +23,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.gson.Gson
 
 class MainParkWindow : AppCompatActivity() {
 
@@ -51,50 +52,43 @@ class MainParkWindow : AppCompatActivity() {
         parkService!!.handleTodayButtonHighlight()
 
         initialCarFetch()
-        setCarsListener()
         setLotsListener()
+
+        val mPrefs = getPreferences(Context.MODE_PRIVATE)
+        val prefsEditor = mPrefs.edit()
+        val gson = Gson()
 
         week_mon.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_mon)
-            StoredData.instance.setDaySelected(WeekDays.MON)
+            val selectedDay = gson.toJson(WeekDays.MON)
+            prefsEditor.putString("selectedDay", selectedDay)
+            prefsEditor.commit()
         }
         week_tues.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_tues)
-            StoredData.instance.setDaySelected(WeekDays.TUES)
+            val selectedDay = gson.toJson(WeekDays.TUES)
+            prefsEditor.putString("selectedDay", selectedDay)
+            prefsEditor.commit()
         }
         week_wed.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_wed)
-            StoredData.instance.setDaySelected(WeekDays.WED)
+            val selectedDay = gson.toJson(WeekDays.WED)
+            prefsEditor.putString("selectedDay", selectedDay)
+            prefsEditor.commit()
         }
         week_thurs.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_thurs)
-            StoredData.instance.setDaySelected(WeekDays.THURS)
+            val selectedDay = gson.toJson(WeekDays.THURS)
+            prefsEditor.putString("selectedDay", selectedDay)
+            prefsEditor.commit()
         }
         week_fri.setOnClickListener {
             parkService!!.handleWeekButtonsTextColor(week_fri)
-            StoredData.instance.setDaySelected(WeekDays.FRI)
+            val selectedDay = gson.toJson(WeekDays.FRI)
+            prefsEditor.putString("selectedDay", selectedDay)
+            prefsEditor.commit()
         }
 
-    }
-
-    fun setCarsListener() {
-        var email = FirebaseAuth.getInstance().currentUser!!.email
-        var database = FirebaseDatabase.getInstance()
-
-        database.getReference("users/").orderByChild("email").equalTo(email).addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                var userDao = snapshot.children.first().getValue(UserDao::class.java)
-                StoredData.instance.setUser(userDao!!)
-                if (userDao?.cars == null) {
-                    StoredData.instance.setStoredCars(ArrayList<CarDao>())
-                } else {
-                    StoredData.instance.setStoredCars(userDao?.cars!!)
-                }
-            }
-        })
     }
 
     fun setLotsListener() {
@@ -109,8 +103,6 @@ class MainParkWindow : AppCompatActivity() {
                 var takenLots = snapshot.children
                 for(lot:DataSnapshot in takenLots){
 
-
-
                 }
             }
         })
@@ -121,6 +113,7 @@ class MainParkWindow : AppCompatActivity() {
 
         var email = FirebaseAuth.getInstance().currentUser!!.email
         var database = FirebaseDatabase.getInstance()
+        var storedCars: ArrayList<CarDao>
 
         database.getReference("users/").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
@@ -128,12 +121,24 @@ class MainParkWindow : AppCompatActivity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 var userDao = snapshot.children.first().getValue(UserDao::class.java)
-                StoredData.instance.setUser(userDao!!)
+
                 if (userDao?.cars == null) {
-                    StoredData.instance.setStoredCars(ArrayList<CarDao>())
+                    storedCars = arrayListOf(CarDao())
                 } else {
-                    StoredData.instance.setStoredCars(userDao?.cars!!)
+                    storedCars = userDao?.cars!!
                 }
+
+                val mPrefs = getPreferences(Context.MODE_PRIVATE)
+                val prefsEditor = mPrefs.edit()
+                val gson = Gson()
+                val storedCarsJson = gson.toJson(storedCars)
+                prefsEditor.putString("storedCars", storedCarsJson)
+
+                val storedUserJson = gson.toJson(userDao!!)
+                prefsEditor.putString("user", storedUserJson)
+
+                prefsEditor.commit()
+
                 parkService!!.updateCarsInUI(1, sectionsPagerAdapter!!.getItem(0).view!!, StoredData.instance.getStoredCars(), userDao)
                 parkService!!.updateCarsInUI(2, sectionsPagerAdapter!!.getItem(1).view!!, StoredData.instance.getStoredCars(), userDao)
 //                parkService!!.updateCarsInUI(3, sectionsPagerAdapter!!.getItem(2).view!!, StoredData.instance.getStoredCars(), userDao)

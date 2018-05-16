@@ -19,6 +19,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.util.Calendar
+import com.google.gson.Gson
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
+import com.google.gson.reflect.TypeToken
 
 
 class ParkingReservationService(activity: Activity, context: Context) {
@@ -73,7 +77,7 @@ class ParkingReservationService(activity: Activity, context: Context) {
         return lot
     }
 
-    fun updateCarsInUI(whichFragmentTab: Int, view: View, storedCars: ArrayList<CarDao>, user: UserDao?) {
+    fun updateCarsInUI(whichFragmentTab: Int, view: View, storedCarsOld: ArrayList<CarDao>, user: UserDao?) {
 
         var lotsNumber = 0
         var lotsId = ""
@@ -87,6 +91,12 @@ class ParkingReservationService(activity: Activity, context: Context) {
             lotsNumber = 8
             lotsId = "JIP"
         }
+
+        val mPrefs = activity.getPreferences(MODE_PRIVATE)
+        val gson = Gson()
+        val json = mPrefs.getString("storedCars", "")
+        val type = object : TypeToken<ArrayList<CarDao>>() {}.type
+        val storedCars = gson.fromJson<ArrayList<CarDao>>(json,type)
 
         for (i in 1..lotsNumber) {
             val resID = context.getResources().getIdentifier(lotsId + i, "id", context.packageName)
@@ -122,7 +132,13 @@ class ParkingReservationService(activity: Activity, context: Context) {
         // REMOVE UNNECESSARY CARS FROM USER
         lotObject.takenBy!!.cars = null
 
-        var reference = "days/" + StoredData.instance.getDaySelected()
+        val mPrefs = activity.getPreferences(MODE_PRIVATE)
+        val gson = Gson()
+        val json = mPrefs.getString("selectedDay", "")
+        val selectedDay = gson.fromJson(json, WeekDays::class.java)
+
+
+        var reference = "days/" + selectedDay
         var database = FirebaseDatabase.getInstance()
         val ref = database.getReference(reference)
         val key = lotObject.lotId
@@ -133,35 +149,51 @@ class ParkingReservationService(activity: Activity, context: Context) {
     fun handleTodayButtonHighlight() {
         val day = CommonUtils().getCurrentDay()
 
+        val mPrefs = activity.getPreferences(Context.MODE_PRIVATE)
+        val prefsEditor = mPrefs.edit()
+        val gson = Gson()
+
         when (day) {
             Calendar.MONDAY -> {
                 activity.findViewById<Button>(R.id.week_mon).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
                 activity.findViewById<Button>(R.id.week_mon).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
-                StoredData.instance.setDaySelected(WeekDays.MON)
+                val selectedDay = gson.toJson(WeekDays.MON)
+                prefsEditor.putString("selectedDay", selectedDay)
+                prefsEditor.commit()
             }
             Calendar.TUESDAY -> {
                 activity.findViewById<Button>(R.id.week_tues).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
                 activity.findViewById<Button>(R.id.week_tues).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
-                StoredData.instance.setDaySelected(WeekDays.TUES)
+                val selectedDay = gson.toJson(WeekDays.TUES)
+                prefsEditor.putString("selectedDay", selectedDay)
+                prefsEditor.commit()
             }
             Calendar.WEDNESDAY -> {
                 activity.findViewById<Button>(R.id.week_wed).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
                 activity.findViewById<Button>(R.id.week_wed).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
-                StoredData.instance.setDaySelected(WeekDays.WED)
+                val selectedDay = gson.toJson(WeekDays.WED)
+                prefsEditor.putString("selectedDay", selectedDay)
+                prefsEditor.commit()
             }
             Calendar.THURSDAY -> {
                 activity.findViewById<Button>(R.id.week_thurs).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
                 activity.findViewById<Button>(R.id.week_thurs).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
-                StoredData.instance.setDaySelected(WeekDays.THURS)
+                val selectedDay = gson.toJson(WeekDays.THURS)
+                prefsEditor.putString("selectedDay", selectedDay)
+                prefsEditor.commit()
             }
             Calendar.FRIDAY -> {
                 activity.findViewById<Button>(R.id.week_fri).setBackground(ContextCompat.getDrawable(context, R.drawable.weeks_button_today))
                 activity.findViewById<Button>(R.id.week_fri).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
-                StoredData.instance.setDaySelected(WeekDays.FRI)
+                val selectedDay = gson.toJson(WeekDays.FRI)
+                prefsEditor.putString("selectedDay", selectedDay)
+                prefsEditor.commit()
             }
             else -> {
                 activity.findViewById<Button>(R.id.week_mon).setTextColor(ContextCompat.getColor(context, R.color.day_selected))
-                StoredData.instance.setDaySelected(WeekDays.MON)
+                val selectedDay = gson.toJson(WeekDays.MON)
+                prefsEditor.putString("selectedDay", selectedDay)
+                prefsEditor.commit()
             }
         }
     }
