@@ -99,7 +99,6 @@ class UserGarage : AppCompatActivity() {
         return true
     }
 
-    // TODO MOVE TO ONE CLASS
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         var itemId = item?.itemId
         when (itemId) {

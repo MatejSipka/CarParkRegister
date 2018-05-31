@@ -96,7 +96,7 @@ class MainParkWindow : AppCompatActivity() {
 
     }
 
-    fun updateLots(){
+    fun updateLots() {
         parkService!!.updateCarsInUI(1, sectionsPagerAdapter!!.getItem(0).view!!)
         parkService!!.updateCarsInUI(2, sectionsPagerAdapter!!.getItem(1).view!!)
         parkService!!.updateCarsInUI(3, sectionsPagerAdapter!!.getItem(2).view!!)
@@ -113,16 +113,16 @@ class MainParkWindow : AppCompatActivity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 var days = snapshot.children
-                for(dayData:DataSnapshot in days){
+                for (dayData: DataSnapshot in days) {
 
-                    var day:DayDto = DayDto()
-                    var lots:ArrayList<ParkingLot> = ArrayList()
+                    var day: DayDto = DayDto()
+                    var lots: ArrayList<ParkingLot> = ArrayList()
 
                     day.day = dayData.key
 
-                    for(lot in dayData.children){
+                    for (lot in dayData.children) {
                         var lot = lot.getValue(ParkingLot::class.java)!!
-                        if(lot != null){
+                        if (lot != null) {
                             lots.add(lot)
                         }
                     }
@@ -152,7 +152,7 @@ class MainParkWindow : AppCompatActivity() {
         var database = FirebaseDatabase.getInstance()
         var storedCars: ArrayList<CarDao>
 
-        database.getReference("users/" + email!!.replace(".","_")).addListenerForSingleValueEvent(object : ValueEventListener {
+        database.getReference("users/" + email!!.replace(".", "_")).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
             }
 

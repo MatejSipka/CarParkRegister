@@ -13,7 +13,6 @@ class TabFragmentThree : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-
         var view: View = inflater!!.inflate(R.layout.tab_fragment_three, container, false)
 
         prs = ParkingReservationService(activity, context)

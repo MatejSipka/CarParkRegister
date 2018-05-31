@@ -36,30 +36,6 @@ class ParkingReservationService(activity: Activity, context: Context) {
         clicked.setTextColor(ContextCompat.getColor(context, R.color.day_selected))
     }
 
-    fun fetchLotsForSelectedDay(day: WeekDays) {
-
-        var database = FirebaseDatabase.getInstance()
-
-        database.getReference("days/").addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                when (day) {
-                    WeekDays.MON -> {
-//                        for(i in 1..13) {
-//                            val resID = activity.getResources().getIdentifier("GAR" + i.toString(), "id", activity.getPackageName())
-//                            activity.findViewById<Button>(resID).text = "FREE"
-//                            activity.findViewById<Button>(resID).setTextColor(ContextCompat.getColor(context, R.color.free_parking_lot))
-//                        }
-                    }
-                }
-
-            }
-        })
-    }
-
     fun prepareLotObject(user: UserDao, car: CarDao, lotID: String): ParkingLot {
         var lot = ParkingLot()
         lot.takenBy = user.copy()

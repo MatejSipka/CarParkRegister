@@ -11,14 +11,10 @@ class CommonUtils {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
 
-    fun getCurrentDay() : Int{
+    fun getCurrentDay(): Int {
         val calendar = Calendar.getInstance()
         val day = calendar.get(Calendar.DAY_OF_WEEK)
         return day
     }
-
-//    fun createColorFromString(color: String) : Color {
-//
-//    }
 
 }

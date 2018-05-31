@@ -21,10 +21,6 @@ class GarageListAdapter(private val dataSource: ArrayList<CarDao>) : RecyclerVie
         }
     }
 
-    fun getItemAtPosition(position: Int): CarDao {
-        return dataSource[position]
-    }
-
     override fun getItemCount(): Int {
         return dataSource.size
     }

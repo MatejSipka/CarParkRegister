@@ -36,45 +36,45 @@ class RegisterScreen : AppCompatActivity() {
             val passwdCheck = register_passwd_check.text.toString()
             val phone = register_phone.text.toString()
 
-            if(doValidation(email, fullName, passwd, passwdCheck, phone)){
+            if (doValidation(email, fullName, passwd, passwdCheck, phone)) {
                 submitNewData(email, fullName, passwd, phone)
             }
         }
     }
 
-    fun doValidation(email: String, fullName: String, passwd: String, passwdCheck:String,  phone: String): Boolean {
-        if(email.isBlank()){
+    fun doValidation(email: String, fullName: String, passwd: String, passwdCheck: String, phone: String): Boolean {
+        if (email.isBlank()) {
             register_email.setError(REQUIRED_FIELD)
             return false
         }
-        if(passwd.isBlank()){
+        if (passwd.isBlank()) {
             register_passwd.setError(REQUIRED_FIELD)
             return false
         }
-        if(passwd.length < 6){
+        if (passwd.length < 6) {
             register_passwd.setError("Password must have at least 6 characters.")
             return false
         }
-        if(passwdCheck.isBlank()){
+        if (passwdCheck.isBlank()) {
             register_passwd_check.setError(REQUIRED_FIELD)
             return false
         }
-        if(phone.isBlank()){
+        if (phone.isBlank()) {
             register_phone.setError(REQUIRED_FIELD)
             return false
         }
-        if(fullName.isBlank()){
+        if (fullName.isBlank()) {
             full_name.setError(REQUIRED_FIELD)
             return false
         }
-        if(!passwd.equals(passwdCheck)){
+        if (!passwd.equals(passwdCheck)) {
             register_passwd_check.setError("Password doesn't match.")
             return false
         }
         return true
     }
 
-    fun submitNewData(email: String, fullName:String, password: String, phone: String) {
+    fun submitNewData(email: String, fullName: String, password: String, phone: String) {
         // TODO REFACTOR REDUNDANT CODE
         auth = FirebaseAuth.getInstance()
         auth.createUserWithEmailAndPassword(email, password)
@@ -87,7 +87,7 @@ class RegisterScreen : AppCompatActivity() {
 
         val user = UserDao(email, fullName, phone)
         val ref = database.getReference("users/")
-        val key = email.replace(".","_")
+        val key = email.replace(".", "_")
         ref.child(key).setValue(user)
     }
 

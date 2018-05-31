@@ -6,6 +6,6 @@ class CarDao(
         val spz: String = ""
 ) {
     override fun toString(): String {
-    return color + " " + model + " - " + spz
+        return color + " " + model + " - " + spz
     }
 }

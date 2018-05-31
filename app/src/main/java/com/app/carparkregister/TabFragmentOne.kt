@@ -11,7 +11,6 @@ class TabFragmentOne : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-
         var view: View = inflater!!.inflate(R.layout.tab_fragment_one, container, false)
 
         val prs = ParkingReservationService(activity, context)
